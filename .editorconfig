@@ -1,0 +1,45 @@
+root = true
+# Remove the line below if you want to inherit .editorconfig settings from higher directories
+
+[*]
+charset = utf-8
+insert_final_newline = true
+file_header_template = Copyright (c) Azure Zeng. All rights reserved.\nLicensed under the Apache License 2.0. See LICENSE in the project root for license information.
+indent_style = space
+
+# ReSharper properties
+resharper_blank_lines_after_block_statements = 0
+resharper_requires_expression_braces = end_of_line
+
+# C# files
+dotnet_separate_import_directive_groups = false
+dotnet_sort_system_directives_first = false
+
+# Java-like new line schema
+csharp_new_line_before_catch = false
+csharp_new_line_before_else = false
+csharp_new_line_before_finally = false
+csharp_new_line_before_members_in_anonymous_types = true
+csharp_new_line_before_members_in_object_initializers = true
+csharp_new_line_before_open_brace = none
+csharp_new_line_between_query_expression_clauses = true
+csharp_indent_braces = false
+
+# C++ files
+# Settings for Visual Studio
+cpp_new_line_before_open_brace_namespace = same_line
+cpp_new_line_before_open_brace_type = same_line
+cpp_new_line_before_open_brace_function = same_line
+cpp_new_line_before_open_brace_block = same_line
+cpp_new_line_before_open_brace_lambda = same_line
+cpp_new_line_before_catch = false
+cpp_new_line_before_else = false
+cpp_new_line_before_while_in_do_while = false
+cpp_new_line_before_while = false
+
+# Setting for Jetbrains dotUltimate
+cpp_brace_style = end_of_line
+cpp_simple_embedded_statement_style = on_single_line
+
+[*.{xml,csproj}]
+indent_size = 4

@@ -1,0 +1,14 @@
+<Project>
+    <PropertyGroup>
+        <_GetTextFileHandlerAssemblyName>AzureZeng.GetTextFileHandler</_GetTextFileHandlerAssemblyName>
+        <_GetTextFileHandlerAssemblyPath Condition="'$(_GetTextFileHandlerAssemblyPath)' == ''">$(MSBuildThisFileDirectory)../tasks/netstandard2.0/$(_GetTextFileHandlerAssemblyName).dll</_GetTextFileHandlerAssemblyPath>
+    </PropertyGroup>
+    <PropertyGroup>
+        <GetTextFileIntermediatePath>$(BaseIntermediateOutputPath)GetTextFiles/</GetTextFileIntermediatePath>
+        <!-- Possible values: Incremental, Always -->
+        <GetTextFileCompileMethod>Incremental</GetTextFileCompileMethod>
+    </PropertyGroup>
+    <UsingTask AssemblyFile="$(_GetTextFileHandlerAssemblyPath)"
+               TaskName="AzureZeng.MSBuildTasks.AssignPoFileItemMetadata" />
+    <UsingTask AssemblyFile="$(_GetTextFileHandlerAssemblyPath)" TaskName="AzureZeng.MSBuildTasks.CompileIntermediateMoFile" />
+</Project>

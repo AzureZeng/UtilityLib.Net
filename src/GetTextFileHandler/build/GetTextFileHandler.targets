@@ -1,0 +1,40 @@
+<Project>
+    <!-- This target is used for assigning related source file metadata -->
+    <Target Name="AssignPoSrcFileMetadata" Returns="@(_PoSrcFile)">
+        <ItemGroup>
+            <PoSrcFile>
+                <_HasSetTargetPath Condition="'%(TargetPath)'!=''">true</_HasSetTargetPath>
+            </PoSrcFile>
+        </ItemGroup>
+        <AssignTargetPath RootFolder="$(MSBuildProjectDirectory)" Files="@(PoSrcFile)">
+            <Output TaskParameter="AssignedFiles" ItemName="_PoSrcFileTemporary"/>
+        </AssignTargetPath>
+        <AssignPoFileItemMetadata Files="@(_PoSrcFileTemporary)" IntermediatePath="$(GetTextFileIntermediatePath)">
+            <Output TaskParameter="AssignedFiles" ItemName="_PoSrcFile"/>
+        </AssignPoFileItemMetadata>
+        <ItemGroup>
+            <_PoSrcFileTemporary Remove="@(_PoSrcFileTemporary)"/>
+        </ItemGroup>
+    </Target>
+
+    <Target Name="CompileGetTextFileCore" Inputs="@(_PoSrcFile)" Outputs="@(_PoSrcFile->'%(IntermediatePath)')">
+        <MakeDir Directories="$(GetTextFileIntermediatePath)"/>
+        <CompileIntermediateMoFile PoSrcFiles="@(_PoSrcFile)"/>
+    </Target>
+
+    <Target Name="SetGetTextBinaryFileInfo">
+        <ItemGroup>
+            <Content Include="%(_PoSrcFile.IntermediatePath)" TargetPath="%(_PoSrcFile.TargetPath)" CopyToOutputDirectory="PreserveNewest"/>
+        </ItemGroup>
+    </Target>
+    
+    <Target Name="HandleGetTextFile" BeforeTargets="BeforeBuild">
+        <CallTarget Targets="AssignPoSrcFileMetadata"/>
+        <CallTarget Targets="CompileGetTextFileCore"/>
+        <CallTarget Targets="SetGetTextBinaryFileInfo"/>
+    </Target>
+    
+    <Target Name="CleanGetTextFile" AfterTargets="AfterClean">
+        <RemoveDir Directories="$(GetTextFileIntermediatePath)"/>
+    </Target>
+</Project>
