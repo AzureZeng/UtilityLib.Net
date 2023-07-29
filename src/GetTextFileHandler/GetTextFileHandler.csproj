@@ -2,11 +2,11 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
         <AssemblyName>AzureZeng.GetTextFileHandler</AssemblyName>
-        <Version>0.0.1.1</Version>
-        
-        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
         <RootNamespace>AzureZeng.MSBuildTasks</RootNamespace>
-
+        <Version>0.0.1.1</Version>
+        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <Authors>Azure Zeng</Authors>
         <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
         <BuildOutputTargetFolder>tasks</BuildOutputTargetFolder>
         <TargetsForTfmSpecificBuildOutput>
@@ -24,6 +24,7 @@
     <ItemGroup>
         <Content Include="build/GetTextFileHandler.props" PackagePath="build/" />
         <Content Include="build/GetTextFileHandler.targets" PackagePath="build/" />
+        <None Include="README.md" Pack="true" PackagePath="\"/>
     </ItemGroup>
 
     <Target Name="CopyProjectReferencesToPackage" DependsOnTargets="ResolveReferences">
