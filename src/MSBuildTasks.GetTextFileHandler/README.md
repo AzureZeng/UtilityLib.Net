@@ -1,6 +1,6 @@
 ﻿# GetTextFileHandler
 
-This NuGet package can help you compile GetText PO file automatically when you build your .NET apps using MSBuild.
+This NuGet package can help you compile gettext PO file automatically when you build your .NET apps using MSBuild.
 
 Currently this package is enough for normal usage. Maybe more features are needed to be implemented in the future.
 

@@ -1,0 +1,8 @@
+<Project>
+    <PropertyGroup>
+        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+        <Authors>Azure Zeng</Authors>
+        <PackageProjectUrl>https://github.com/AzureZeng/UtilityLib.Net</PackageProjectUrl>
+        <Copyright>Copyright (c) Azure Zeng. All rights reserved.</Copyright>
+    </PropertyGroup>
+</Project>

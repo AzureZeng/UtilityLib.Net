@@ -4,9 +4,13 @@
         <AssemblyName>AzureZeng.MSBuildTasks.GetTextFileHandler</AssemblyName>
         <RootNamespace>AzureZeng.MSBuildTasks</RootNamespace>
         <Version>0.0.1.1</Version>
-        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+        
+        <Description>A MSBuild task to help you process gettext PO file</Description>
+        <PackageTags>gettext</PackageTags>
+        <RepositoryType>git</RepositoryType>
+        <RepositoryUrl>https://github.com/AzureZeng/UtilityLib.Net</RepositoryUrl>
         <PackageReadmeFile>README.md</PackageReadmeFile>
-        <Authors>Azure Zeng</Authors>
+        
         <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
         <BuildOutputTargetFolder>tasks</BuildOutputTargetFolder>
         <TargetsForTfmSpecificBuildOutput>
