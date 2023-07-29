@@ -4,6 +4,8 @@ This NuGet package can help you compile GetText PO file automatically when you b
 
 Currently this package is enough for normal usage. Maybe more features are needed to be implemented in the future.
 
+**WARNING**: This package may have some break changes in the future. 
+
 ## Requirements
 
 Tool `msgfmt` must be installed and configured properly in your `PATH` environment variable.
