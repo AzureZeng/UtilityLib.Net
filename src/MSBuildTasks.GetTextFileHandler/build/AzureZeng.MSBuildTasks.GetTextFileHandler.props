@@ -1,6 +1,6 @@
 <Project>
     <PropertyGroup>
-        <_GetTextFileHandlerAssemblyName>AzureZeng.GetTextFileHandler</_GetTextFileHandlerAssemblyName>
+        <_GetTextFileHandlerAssemblyName>$(MSBuildThisFileName)</_GetTextFileHandlerAssemblyName>
         <_GetTextFileHandlerAssemblyPath Condition="'$(_GetTextFileHandlerAssemblyPath)' == ''">$(MSBuildThisFileDirectory)../tasks/netstandard2.0/$(_GetTextFileHandlerAssemblyName).dll</_GetTextFileHandlerAssemblyPath>
     </PropertyGroup>
     <PropertyGroup>

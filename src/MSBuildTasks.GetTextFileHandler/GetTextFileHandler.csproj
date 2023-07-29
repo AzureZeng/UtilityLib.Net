@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
-        <AssemblyName>AzureZeng.GetTextFileHandler</AssemblyName>
+        <AssemblyName>AzureZeng.MSBuildTasks.GetTextFileHandler</AssemblyName>
         <RootNamespace>AzureZeng.MSBuildTasks</RootNamespace>
         <Version>0.0.1.1</Version>
         <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
@@ -22,9 +22,9 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Content Include="build/GetTextFileHandler.props" PackagePath="build/" />
-        <Content Include="build/GetTextFileHandler.targets" PackagePath="build/" />
-        <None Include="README.md" Pack="true" PackagePath="\"/>
+        <Content Include="build\AzureZeng.MSBuildTasks.GetTextFileHandler.props" PackagePath="build/" />
+        <Content Include="build\AzureZeng.MSBuildTasks.GetTextFileHandler.targets" PackagePath="build/" />
+        <None Include="README.md" Pack="true" PackagePath="\" />
     </ItemGroup>
 
     <Target Name="CopyProjectReferencesToPackage" DependsOnTargets="ResolveReferences">
