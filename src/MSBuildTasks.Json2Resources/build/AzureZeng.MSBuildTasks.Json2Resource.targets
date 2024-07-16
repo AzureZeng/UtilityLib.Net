@@ -1,0 +1,28 @@
+<Project>
+    <Target Name="JsonResourcePropEval" BeforeTargets="CompileAndAddJsonResources;CleanJsonResourceIntermediateFiles">
+        <JsonEmbeddedResourcePropEval Inputs="@(JsonResource)" RootNamespace="$(RootNamespace)"
+                                      IntermediateOutputPath="$(IntermediateOutputPath)">
+            <Output TaskParameter="Outputs" ItemName="_JsonResource"/>
+        </JsonEmbeddedResourcePropEval>
+        <ItemGroup>
+            <JsonResource Remove="@(JsonResource)"/>
+            <JsonResource Include="@(_JsonResource)"/>
+            <_JsonResource Remove="@(_JsonResource)"/>
+        </ItemGroup>
+    </Target>
+
+    <Target Name="CompileJsonResources" Inputs="@(JsonResource)" Outputs="@(JsonResource->'%(IntermediatePath)')">
+        <JsonEmbeddedResourceProcessor Inputs="@(JsonResource)" ContextPath="$(MSBuildProjectDirectory)"/>
+    </Target>
+
+    <Target Name="CompileAndAddJsonResources" BeforeTargets="BeforeBuild">
+        <CallTarget Targets="CompileJsonResources"/>
+        <ItemGroup>
+            <EmbeddedResource Include="@(JsonResource->'%(IntermediatePath)')" LogicalName="@(JsonResource->'%(LogicalName)')"/>
+        </ItemGroup>
+    </Target>
+
+    <Target Name="CleanJsonResourceIntermediateFiles" AfterTargets="AfterClean">
+        <Delete Files="@(JsonResource->'%(IntermediatePath)')"/>
+    </Target>
+</Project>

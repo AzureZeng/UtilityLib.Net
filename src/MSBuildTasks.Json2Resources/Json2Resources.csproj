@@ -1,16 +1,15 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
-        <AssemblyName>AzureZeng.MSBuildTasks.GetTextFileHandler</AssemblyName>
         <RootNamespace>AzureZeng.MSBuildTasks</RootNamespace>
-        <Version>0.0.1.1</Version>
-        
-        <Description>A MSBuild task to help you process gettext PO file</Description>
-        <PackageTags>gettext</PackageTags>
+        <LangVersion>12.0</LangVersion>
+
+        <Description>Convert JSON resource manifests to standard .NET resources</Description>
         <RepositoryType>git</RepositoryType>
         <RepositoryUrl>https://github.com/AzureZeng/UtilityLib.Net</RepositoryUrl>
         <PackageReadmeFile>README.md</PackageReadmeFile>
-        
+
         <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
         <BuildOutputTargetFolder>tasks</BuildOutputTargetFolder>
         <TargetsForTfmSpecificBuildOutput>
@@ -19,29 +18,33 @@
         <NoWarn>NU5100;NU5128;NU5129</NoWarn>
         <GenerateDependencyFile>true</GenerateDependencyFile>
         <IsPackable>true</IsPackable>
+        <AssemblyName>AzureZeng.MSBuildTasks.Json2Resources</AssemblyName>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Microsoft.Build.Utilities.Core" Version="17.10.4" PrivateAssets="all" ExcludeAssets="Runtime">
           <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-    </ItemGroup>
-
-    <ItemGroup>
-        <Content Include="build\AzureZeng.MSBuildTasks.GetTextFileHandler.props" PackagePath="build/" />
-        <Content Include="build\AzureZeng.MSBuildTasks.GetTextFileHandler.targets" PackagePath="build/" />
-        <Content Include="README.md" Pack="true" PackagePath="\" />
+        <PackageReference Include="System.Text.Json" Version="8.0.4" PrivateAssets="all" ExcludeAssets="Runtime">
+          <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
     </ItemGroup>
 
     <Target Name="CopyProjectReferencesToPackage" DependsOnTargets="ResolveReferences">
         <ItemGroup>
-            <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths)" TargetPath="%(ReferenceCopyLocalPaths.DestinationSubPath)" />
+            <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths)" TargetPath="%(ReferenceCopyLocalPaths.DestinationSubPath)"/>
         </ItemGroup>
     </Target>
 
     <Target Name="AddBuildDependencyFileToBuiltProjectOutputGroupOutput" BeforeTargets="BuiltProjectOutputGroup" Condition=" '$(GenerateDependencyFile)' == 'true'">
         <ItemGroup>
-            <BuiltProjectOutputGroupOutput Include="$(ProjectDepsFilePath)" TargetPath="$(ProjectDepsFileName)" FinalOutputPath="$(ProjectDepsFilePath)" />
+            <BuiltProjectOutputGroupOutput Include="$(ProjectDepsFilePath)" TargetPath="$(ProjectDepsFileName)" FinalOutputPath="$(ProjectDepsFilePath)"/>
         </ItemGroup>
     </Target>
+
+    <ItemGroup>
+        <Content Include="build\AzureZeng.MSBuildTasks.Json2Resource.props" PackagePath="build/" />
+        <Content Include="build\AzureZeng.MSBuildTasks.Json2Resource.targets" PackagePath="build/" />
+        <Content Include="README.md" Pack="true" PackagePath="\"/>
+    </ItemGroup>
 </Project>

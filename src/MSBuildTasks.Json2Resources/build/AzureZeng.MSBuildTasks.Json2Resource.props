@@ -1,0 +1,8 @@
+<Project>
+    <PropertyGroup>
+        <_Json2ResourceAssemblyName>$(MSBuildThisFileName)</_Json2ResourceAssemblyName>
+        <_Json2ResourceAssemblyPath Condition="'$(_Json2ResourceAssemblyPath)' == ''">$(MSBuildThisFileDirectory)../tasks/netstandard2.0/$(_Json2ResourceAssemblyName).dll</_Json2ResourceAssemblyPath>
+    </PropertyGroup>
+    <UsingTask TaskName="AzureZeng.MSBuildTasks.JsonEmbeddedResourcePropEval" AssemblyFile="$(_Json2ResourceAssemblyPath)"/>
+    <UsingTask TaskName="AzureZeng.MSBuildTasks.JsonEmbeddedResourceProcessor" AssemblyFile="$(_Json2ResourceAssemblyPath)"/>
+</Project>
