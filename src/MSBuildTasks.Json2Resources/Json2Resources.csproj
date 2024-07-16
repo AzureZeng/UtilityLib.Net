@@ -1,8 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
+        <AssemblyName>AzureZeng.MSBuildTasks.Json2Resources</AssemblyName>
         <RootNamespace>AzureZeng.MSBuildTasks</RootNamespace>
+        <Version>0.0.1.1</Version>
         <LangVersion>12.0</LangVersion>
 
         <Description>Convert JSON resource manifests to standard .NET resources</Description>
@@ -18,18 +19,19 @@
         <NoWarn>NU5100;NU5128;NU5129</NoWarn>
         <GenerateDependencyFile>true</GenerateDependencyFile>
         <IsPackable>true</IsPackable>
-        <AssemblyName>AzureZeng.MSBuildTasks.Json2Resources</AssemblyName>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.Build.Utilities.Core" Version="17.10.4" PrivateAssets="all" ExcludeAssets="Runtime">
-          <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
-        <PackageReference Include="System.Text.Json" Version="8.0.4" PrivateAssets="all" ExcludeAssets="Runtime">
-          <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
+        <PackageReference Include="Microsoft.Build.Utilities.Core" Version="17.10.4" PrivateAssets="all" ExcludeAssets="Runtime"/>
+        <PackageReference Include="System.Text.Json" Version="8.0.4" PrivateAssets="all"/>
     </ItemGroup>
 
+    <ItemGroup>
+        <Content Include="build\AzureZeng.MSBuildTasks.Json2Resource.props" PackagePath="build/" />
+        <Content Include="build\AzureZeng.MSBuildTasks.Json2Resource.targets" PackagePath="build/" />
+        <Content Include="README.md" Pack="true" PackagePath="\"/>
+    </ItemGroup>
+    
     <Target Name="CopyProjectReferencesToPackage" DependsOnTargets="ResolveReferences">
         <ItemGroup>
             <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths)" TargetPath="%(ReferenceCopyLocalPaths.DestinationSubPath)"/>
@@ -41,10 +43,4 @@
             <BuiltProjectOutputGroupOutput Include="$(ProjectDepsFilePath)" TargetPath="$(ProjectDepsFileName)" FinalOutputPath="$(ProjectDepsFilePath)"/>
         </ItemGroup>
     </Target>
-
-    <ItemGroup>
-        <Content Include="build\AzureZeng.MSBuildTasks.Json2Resource.props" PackagePath="build/" />
-        <Content Include="build\AzureZeng.MSBuildTasks.Json2Resource.targets" PackagePath="build/" />
-        <Content Include="README.md" Pack="true" PackagePath="\"/>
-    </ItemGroup>
 </Project>

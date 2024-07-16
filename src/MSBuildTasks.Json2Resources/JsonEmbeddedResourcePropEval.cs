@@ -19,29 +19,35 @@ public class JsonEmbeddedResourcePropEval : Task {
 
     public override bool Execute() {
         if (Inputs == null || Inputs.Length == 0) return true;
-        Outputs = new ITaskItem[Inputs.Length];
-        for (int i = 0; i < Inputs.Length; i++) {
-            var input = Inputs[i];
-            // Get item path relative to project
-            var link = input.GetMetadata("Link");
-            var itemRelativePath = string.IsNullOrEmpty(link) ? input.ItemSpec : link;
+        try {
+            Outputs = new ITaskItem[Inputs.Length];
+            for (int i = 0; i < Inputs.Length; i++) {
+                var input = Inputs[i];
+                // Get item path relative to project
+                var link = input.GetMetadata("Link");
+                var itemRelativePath = string.IsNullOrEmpty(link) ? input.ItemSpec : link;
 
-            // now translate it to logical name
-            var ns = Dir2NS(Path.GetDirectoryName(itemRelativePath));
-            var name = Path.GetFileNameWithoutExtension(itemRelativePath);
-            var defaultLogicalName = DetermineLogicalName(ns, name);
+                // now translate it to logical name
+                var ns = Dir2NS(Path.GetDirectoryName(itemRelativePath));
+                var name = Path.GetFileNameWithoutExtension(itemRelativePath);
+                var defaultLogicalName = DetermineLogicalName(ns, name);
 
-            // determine LogicalName
-            var logicalName = input.GetMetadata("LogicalName");
-            if (string.IsNullOrEmpty(logicalName)) logicalName = defaultLogicalName;
+                // determine LogicalName
+                var logicalName = input.GetMetadata("LogicalName");
+                if (string.IsNullOrEmpty(logicalName)) logicalName = defaultLogicalName;
 
-            // set metadata for output item
-            var output = new TaskItem(input);
-            output.SetMetadata("LogicalName", logicalName);
-            output.SetMetadata("IntermediatePath",
-                Path.Combine(IntermediateOutputPath, logicalName));
-            Outputs[i] = output;
+                // set metadata for output item
+                var output = new TaskItem(input);
+                output.SetMetadata("LogicalName", logicalName);
+                output.SetMetadata("IntermediatePath",
+                    Path.Combine(IntermediateOutputPath, logicalName));
+                Outputs[i] = output;
+            }
+        } catch (Exception e) {
+            Log.LogError(e.ToString());
+            return false;
         }
+
         return true;
     }
 
