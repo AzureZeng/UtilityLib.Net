@@ -1,0 +1,5 @@
+{
+  "Exceptions": {
+    "InvalidStrToLongValueType": "从字符串中读取整数数据时遇到了不支持的JSON数据类型：{0}。"
+  }
+}

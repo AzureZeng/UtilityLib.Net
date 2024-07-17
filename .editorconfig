@@ -44,3 +44,6 @@ cpp_simple_embedded_statement_style = on_single_line
 
 [*.{xml,csproj}]
 indent_size = 4
+
+[*.json]
+indent_size = 2

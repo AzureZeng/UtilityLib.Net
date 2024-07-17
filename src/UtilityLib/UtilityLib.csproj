@@ -1,17 +1,26 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
+        <AssemblyName>AzureZeng.UtilityLib</AssemblyName>
+        <RootNamespace>AzureZeng.UtilityLib</RootNamespace>
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <Version>0.0.1.1</Version>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-      <DocumentationFile>bin\Release\UtilityLib.xml</DocumentationFile>
+        <DocumentationFile>bin\Release\UtilityLib.xml</DocumentationFile>
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="ResourceHandlers\" />
+        <PackageReference Include="AzureZeng.MSBuildTasks.Json2Resources" Version="0.0.1.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <JsonResource Include="StringResources.json" />
+        <JsonResource Include="StringResources.*.json" />
+        <Folder Include="ResourceHandlers\" />
     </ItemGroup>
 
 </Project>
