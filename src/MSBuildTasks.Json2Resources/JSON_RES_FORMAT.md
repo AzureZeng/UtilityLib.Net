@@ -34,4 +34,4 @@ You can use advanced settings to set the external resource file path and the res
 | Property Name | Description                                        | Supported Values            |
 |---------------|----------------------------------------------------|-----------------------------|
 | `file`        | The external resource file to be loaded            | Absolute/Relative File Path |
-| `mode`        | The resource type (load type) of the external file | `text`, `binary`, `stream`  | 
+| `mode`        | The resource type (load mode) of the external file | `text`, `binary`, `stream`  | 
