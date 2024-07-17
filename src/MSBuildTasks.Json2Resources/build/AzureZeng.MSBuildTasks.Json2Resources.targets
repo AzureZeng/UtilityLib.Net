@@ -18,11 +18,11 @@
     <Target Name="CompileAndAddJsonResources" BeforeTargets="BeforeBuild">
         <CallTarget Targets="CompileJsonResources"/>
         <ItemGroup>
-            <EmbeddedResource Include="@(JsonResource->'%(IntermediatePath)')" LogicalName="@(JsonResource->'%(LogicalName)')"/>
+            <EmbeddedResource Include="%(JsonResource.IntermediatePath)" LogicalName="%(JsonResource.LogicalName)"/>
         </ItemGroup>
     </Target>
 
     <Target Name="CleanJsonResourceIntermediateFiles" AfterTargets="AfterClean">
-        <Delete Files="@(JsonResource->'%(IntermediatePath)')"/>
+        <Delete Files="%(JsonResource.IntermediatePath)"/>
     </Target>
 </Project>

@@ -33,15 +33,15 @@ public class JsonEmbeddedResourcePropEval : Task {
                 var defaultLogicalName = DetermineLogicalName(ns, name);
 
                 // determine LogicalName
-                var logicalName = input.GetMetadata("LogicalName");
-                if (string.IsNullOrEmpty(logicalName)) logicalName = defaultLogicalName;
-                logicalName = $"{logicalName}.resources";
+                var finalLogicalName = input.GetMetadata("LogicalName");
+                if (string.IsNullOrEmpty(finalLogicalName)) finalLogicalName = defaultLogicalName;
+                finalLogicalName = $"{finalLogicalName}.resources";
 
                 // set metadata for output item
                 var output = new TaskItem(input);
-                output.SetMetadata("LogicalName", logicalName);
+                output.SetMetadata("LogicalName", finalLogicalName);
                 output.SetMetadata("IntermediatePath",
-                    Path.Combine(IntermediateOutputPath, logicalName));
+                    Path.Combine(IntermediateOutputPath, $"{defaultLogicalName}.resources"));
                 Outputs[i] = output;
             }
         } catch (Exception e) {

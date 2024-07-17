@@ -3,7 +3,7 @@
         <TargetFramework>netstandard2.0</TargetFramework>
         <AssemblyName>AzureZeng.MSBuildTasks.Json2Resources</AssemblyName>
         <RootNamespace>AzureZeng.MSBuildTasks</RootNamespace>
-        <Version>0.0.1.1</Version>
+        <Version>0.0.1.2</Version>
         <LangVersion>12.0</LangVersion>
 
         <Description>Convert JSON resource manifests to standard .NET resources</Description>
@@ -19,6 +19,8 @@
         <NoWarn>NU5100;NU5128;NU5129</NoWarn>
         <GenerateDependencyFile>true</GenerateDependencyFile>
         <IsPackable>true</IsPackable>
+        <SignAssembly>true</SignAssembly>
+        <AssemblyOriginatorKeyFile>..\..\SignKey.snk</AssemblyOriginatorKeyFile>
     </PropertyGroup>
 
     <ItemGroup>
@@ -27,10 +29,16 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Content Include="build\AzureZeng.MSBuildTasks.Json2Resource.props" PackagePath="build/"/>
-        <Content Include="build\AzureZeng.MSBuildTasks.Json2Resource.targets" PackagePath="build/"/>
+        <Content Include="build\AzureZeng.MSBuildTasks.Json2Resources.props" PackagePath="build/" />
+        <Content Include="build\AzureZeng.MSBuildTasks.Json2Resources.targets" PackagePath="build/" />
         <Content Include="README.md" Pack="true" PackagePath="\"/>
         <Content Include="JSON_RES_FORMAT.md" Pack="true" PackagePath="\"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="..\..\SignKey.snk">
+        <Link>SignKey.snk</Link>
+      </None>
     </ItemGroup>
 
     <Target Name="CopyProjectReferencesToPackage" DependsOnTargets="ResolveReferences">
