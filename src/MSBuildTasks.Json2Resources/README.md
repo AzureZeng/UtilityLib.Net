@@ -21,7 +21,10 @@ It will be compiled and embedded to assembly automatically.
 
 ## Supported properties
 
-| Property Name | Description                                                              | Default Value           |
-|---------------|--------------------------------------------------------------------------|-------------------------|
-| FilePrefix    | The prefix of resource keys which resources are load from external files | `$file:`                |
-| LogicalName   | The logical resource name in assembly                                    | Auto-determined by task |
+| Property Name | Description                                                              | Accepted Values                | Default Value           |
+|---------------|--------------------------------------------------------------------------|--------------------------------|-------------------------|
+| FilePrefix    | The prefix of resource keys which resources are load from external files | Any                            | `$file:`                |
+| LogicalName   | The logical resource name in assembly                                    | Any                            | Auto-determined by task |
+| ContextPath   | The resource compile context path, for external resource files           | `FileDir`, or any other values | Empty (as project root) |
+
+If `ContextPath` is set to `FileDir`, the resource compile context path will be the directory which contains the JSON resource file.

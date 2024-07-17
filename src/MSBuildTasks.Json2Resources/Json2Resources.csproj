@@ -3,11 +3,13 @@
         <TargetFramework>netstandard2.0</TargetFramework>
         <AssemblyName>AzureZeng.MSBuildTasks.Json2Resources</AssemblyName>
         <RootNamespace>AzureZeng.MSBuildTasks</RootNamespace>
-        <Version>0.0.1.2</Version>
+        <Version>0.0.1.3</Version>
         <LangVersion>12.0</LangVersion>
 
         <Description>Convert JSON resource manifests to standard .NET resources</Description>
+        <PackageTags>resource json</PackageTags>
         <RepositoryType>git</RepositoryType>
+        <PackageProjectUrl>https://azurezeng.com/</PackageProjectUrl>
         <RepositoryUrl>https://github.com/AzureZeng/UtilityLib.Net</RepositoryUrl>
         <PackageReadmeFile>README.md</PackageReadmeFile>
 
