@@ -27,11 +27,12 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Content Include="build\AzureZeng.MSBuildTasks.Json2Resource.props" PackagePath="build/" />
-        <Content Include="build\AzureZeng.MSBuildTasks.Json2Resource.targets" PackagePath="build/" />
+        <Content Include="build\AzureZeng.MSBuildTasks.Json2Resource.props" PackagePath="build/"/>
+        <Content Include="build\AzureZeng.MSBuildTasks.Json2Resource.targets" PackagePath="build/"/>
         <Content Include="README.md" Pack="true" PackagePath="\"/>
+        <Content Include="JSON_RES_FORMAT.md" Pack="true" PackagePath="\"/>
     </ItemGroup>
-    
+
     <Target Name="CopyProjectReferencesToPackage" DependsOnTargets="ResolveReferences">
         <ItemGroup>
             <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths)" TargetPath="%(ReferenceCopyLocalPaths.DestinationSubPath)"/>

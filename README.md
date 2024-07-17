@@ -3,9 +3,10 @@ Some utility libraries for .NET platform.
 
 ## Libraries
 
-| Name               | Description                                         |
-| ------------------ | --------------------------------------------------- |
-| GetTextFileHandler | Used for processing gettext PO files automatically. |
+| Name               | Description                                                             |
+|--------------------|-------------------------------------------------------------------------|
+| GetTextFileHandler | Used for processing gettext PO files automatically.                     |
+| Json2Resource      | Used for processing JSON Resoures to .NET resource files automatically. |
 
 ## License
 

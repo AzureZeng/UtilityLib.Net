@@ -35,6 +35,7 @@ public class JsonEmbeddedResourcePropEval : Task {
                 // determine LogicalName
                 var logicalName = input.GetMetadata("LogicalName");
                 if (string.IsNullOrEmpty(logicalName)) logicalName = defaultLogicalName;
+                logicalName = $"{logicalName}.resources";
 
                 // set metadata for output item
                 var output = new TaskItem(input);
@@ -62,7 +63,6 @@ public class JsonEmbeddedResourcePropEval : Task {
             sb.Append('.');
         }
         sb.Append(name);
-        sb.Append(".resources");
         return sb.ToString();
     }
 

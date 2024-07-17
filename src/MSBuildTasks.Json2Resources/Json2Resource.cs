@@ -59,7 +59,10 @@ public static class Json2Resource {
                 string name = $"{finalNs}{p.Name}";
                 // Read item data from file
                 if (!string.IsNullOrEmpty(fileItemPrefix) && p.Name.StartsWith(fileItemPrefix)) {
-                    name = $"{finalNs}{p.Name.Substring(fileItemPrefix.Length)}";
+                    var resName = p.Name.Substring(fileItemPrefix.Length);
+                    if (string.IsNullOrEmpty(resName))
+                        throw new ArgumentException($"Invalid external file key: {p.Name}");
+                    name = $"{finalNs}{resName}";
                     var mode = string.Empty;
                     var fileName = string.Empty;
                     // Resolve external resource info
@@ -99,7 +102,7 @@ public static class Json2Resource {
                         resw.AddResource(name, fs);
                     } else {
                         throw new ArgumentException(
-                            $"Unsupported file mode type '{mode}', only accepts 'text' or 'binary'");
+                            $"Unsupported file mode type '{mode}', only accepts 'text', 'binary' or 'stream'.");
                     }
                     continue;
                 }
