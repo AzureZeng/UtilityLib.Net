@@ -36,7 +36,8 @@ public static class Json2Resource {
     public static void Convert(string resFileName, string outputFileName, string fileItemPrefix = "$file:",
         string contextPath = "") {
         using var resw = new ResourceWriter(outputFileName);
-        var reader = new Utf8JsonReader(File.ReadAllBytes(resFileName));
+        var reader = new Utf8JsonReader(File.ReadAllBytes(resFileName),
+            new JsonReaderOptions() { AllowTrailingCommas = true, CommentHandling = JsonCommentHandling.Skip });
         var element = JsonElement.ParseValue(ref reader);
         var streamList = new List<Stream>();
         Json2ResourceInternal(resw, ref element, string.Empty, fileItemPrefix, contextPath, streamList);

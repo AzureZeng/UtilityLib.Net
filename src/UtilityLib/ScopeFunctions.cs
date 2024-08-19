@@ -8,7 +8,7 @@ namespace AzureZeng.UtilityLib;
 /// Some useful object scope extension functions.
 /// </summary>
 public static class ScopeFunctions {
-    public static T Apply<T>(this T obj, Action<T> action) {
+    public static T Apply<T>(this T obj, Action<T>? action) {
         if (action == null) return obj;
         action(obj);
         return obj;
