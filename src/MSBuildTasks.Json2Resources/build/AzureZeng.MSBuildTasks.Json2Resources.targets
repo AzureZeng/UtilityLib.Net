@@ -16,6 +16,9 @@
     </Target>
 
     <Target Name="CompileAndAddJsonResources" BeforeTargets="BeforeBuild">
+        <!-- Make intermediate output path first, maybe it is not exist -->
+        <MakeDir Directories="$(IntermediateOutputPath)"/>
+        
         <CallTarget Targets="CompileJsonResources"/>
         <ItemGroup>
             <EmbeddedResource Include="%(JsonResource.IntermediatePath)" LogicalName="%(JsonResource.LogicalName)"/>
