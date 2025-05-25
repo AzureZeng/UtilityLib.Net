@@ -14,7 +14,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="AzureZeng.MSBuildTasks.Json2Resources" Version="0.0.1.2" />
+        <PackageReference Include="AzureZeng.MSBuildTasks.Json2Resources" Version="0.0.1.5" />
     </ItemGroup>
 
     <ItemGroup>
