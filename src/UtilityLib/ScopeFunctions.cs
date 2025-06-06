@@ -3,7 +3,6 @@
 
 namespace AzureZeng.UtilityLib;
 
-# nullable disable
 /// <summary>
 /// Some useful object scope extension functions.
 /// </summary>

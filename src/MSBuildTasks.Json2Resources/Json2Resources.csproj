@@ -4,7 +4,6 @@
         <AssemblyName>AzureZeng.MSBuildTasks.Json2Resources</AssemblyName>
         <RootNamespace>AzureZeng.MSBuildTasks</RootNamespace>
         <Version>0.0.1.5</Version>
-        <LangVersion>13.0</LangVersion>
 
         <Description>Convert JSON resource manifests to standard .NET resources</Description>
         <PackageTags>resource json</PackageTags>

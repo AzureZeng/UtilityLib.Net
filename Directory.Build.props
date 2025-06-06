@@ -4,5 +4,7 @@
         <Authors>Azure Zeng</Authors>
         <PackageProjectUrl>https://github.com/AzureZeng/UtilityLib.Net</PackageProjectUrl>
         <Copyright>Copyright (c) Azure Zeng. All rights reserved.</Copyright>
+        <TargetFramework Condition="'$(TargetFramework)'==''">net8.0</TargetFramework>
+        <LangVersion Condition="'$(LangVersion)'==''">13.0</LangVersion>
     </PropertyGroup>
 </Project>

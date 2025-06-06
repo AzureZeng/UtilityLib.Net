@@ -7,7 +7,7 @@ public static class UtilFunctions {
     public static void ForceDispose(IDisposable? disposable) {
         try {
             disposable?.Dispose();
-        } catch (Exception e) {
+        } catch (Exception _) {
             // ignore
         }
     }

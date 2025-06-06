@@ -1,0 +1,21 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Folder Name="/CLI Utils/" />
+  <Folder Name="/Libraries/">
+    <Project Path="src/AopExtensions/AopExtensions.csproj" />
+    <Project Path="src/DependencyInjectionUtilities/DependencyInjectionUtilities.csproj" />
+    <Project Path="src/RedisExtensions/RedisExtensions.csproj" />
+    <Project Path="src/UtilityLib/UtilityLib.csproj" />
+  </Folder>
+  <Folder Name="/MSBuild Tasks/">
+    <Project Path="src/MSBuildTasks.GetTextFileHandler/GetTextFileHandler.csproj" />
+    <Project Path="src/MSBuildTasks.Json2Resources/Json2Resources.csproj" />
+  </Folder>
+  <Folder Name="/Utilities/">
+    <Project Path="utils/TZLocBuilder/TZLocBuilder.csproj" />
+  </Folder>
+</Solution>

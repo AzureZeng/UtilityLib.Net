@@ -14,13 +14,15 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="AzureZeng.MSBuildTasks.Json2Resources" Version="0.0.1.5" />
+        <PackageReference Include="AzureZeng.MSBuildTasks.Json2Resources" Version="0.0.1.5"/>
     </ItemGroup>
 
     <ItemGroup>
-        <JsonResource Include="StringResources.json" />
-        <JsonResource Include="StringResources.*.json" />
-        <Folder Include="ResourceHandlers\" />
+        <Folder Include="Resources\TimeZones\"/>
+        <JsonResource Include="StringResources.json"/>
+        <JsonResource Include="StringResources.*.json"/>
+        <JsonResource Include="Resources/LikelySubTagResource.json"/>
+        <JsonResource Include="Resources/TimeZoneResources.json"/>
     </ItemGroup>
 
 </Project>
