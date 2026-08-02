@@ -52,24 +52,24 @@ public class Json2ResourceTests {
 
     [TestMethod]
     public void DuplicateKeyDetection() {
-        var ex = Assert.ThrowsException<ArgumentException>(() => ConvertAndRead("""{"a.b":1,"a":{"b":2}}"""));
+        var ex = Assert.ThrowsExactly<ArgumentException>(() => ConvertAndRead("""{"a.b":1,"a":{"b":2}}"""));
         StringAssert.Contains(ex.Message, "Duplicate resource name: 'a.b'");
     }
 
     [TestMethod]
     public void DuplicateKeyDetectionIsCaseInsensitive() {
-        Assert.ThrowsException<ArgumentException>(() => ConvertAndRead("""{"Key":1,"key":2}"""));
+        Assert.ThrowsExactly<ArgumentException>(() => ConvertAndRead("""{"Key":1,"key":2}"""));
     }
 
     [TestMethod]
     public void RootMustBeObject() {
-        Assert.ThrowsException<ArgumentException>(() => ConvertAndRead("[1,2,3]"));
-        Assert.ThrowsException<ArgumentException>(() => ConvertAndRead("\"hello\""));
+        Assert.ThrowsExactly<ArgumentException>(() => ConvertAndRead("[1,2,3]"));
+        Assert.ThrowsExactly<ArgumentException>(() => ConvertAndRead("\"hello\""));
     }
 
     [TestMethod]
     public void ArrayValueThrowsClearError() {
-        var ex = Assert.ThrowsException<ArgumentException>(() => ConvertAndRead("""{"arr":[1,2]}"""));
+        var ex = Assert.ThrowsExactly<ArgumentException>(() => ConvertAndRead("""{"arr":[1,2]}"""));
         StringAssert.Contains(ex.Message, "array");
     }
 
