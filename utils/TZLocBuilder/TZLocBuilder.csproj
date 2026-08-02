@@ -5,6 +5,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <RootNamespace>AzureZeng.Utilities</RootNamespace>
+        <TargetFramework>net10.0</TargetFramework>
     </PropertyGroup>
 
     <ItemGroup>

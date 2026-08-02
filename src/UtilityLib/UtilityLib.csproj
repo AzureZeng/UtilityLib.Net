@@ -3,7 +3,7 @@
     <PropertyGroup>
         <AssemblyName>AzureZeng.UtilityLib</AssemblyName>
         <RootNamespace>AzureZeng.UtilityLib</RootNamespace>
-        <TargetFramework>net8.0</TargetFramework>
+        <TargetFramework>net10.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <Version>0.0.1.1</Version>
