@@ -1,8 +1,15 @@
 <Project>
+    <!--
+        Evaluates every JsonResource item: computes the LogicalName / IntermediatePath metadata and the
+        flattened list of external files referenced through the file-prefix keys. Runs before compilation
+        so the enriched items and the dependency list are available to the build.
+    -->
     <Target Name="JsonResourcePropEval" BeforeTargets="CompileAndAddJsonResources;CleanJsonResourceIntermediateFiles">
         <JsonEmbeddedResourcePropEval Inputs="@(JsonResource)" RootNamespace="$(RootNamespace)"
-                                      IntermediateOutputPath="$(IntermediateOutputPath)">
+                                      IntermediateOutputPath="$(IntermediateOutputPath)"
+                                      ContextPath="$(MSBuildProjectDirectory)">
             <Output TaskParameter="Outputs" ItemName="_JsonResource"/>
+            <Output TaskParameter="ExternalFiles" ItemName="_JsonResourceExternalFiles"/>
         </JsonEmbeddedResourcePropEval>
         <ItemGroup>
             <JsonResource Remove="@(JsonResource)"/>
@@ -11,20 +18,30 @@
         </ItemGroup>
     </Target>
 
-    <Target Name="CompileJsonResources" Inputs="@(JsonResource)" Outputs="@(JsonResource->'%(IntermediatePath)')">
+    <!--
+        Converts each JSON manifest to its .resources file. The incremental-build inputs include BOTH the
+        manifest files and the external files they reference, so changing an external file also triggers a
+        rebuild. Because the input list is larger than the output list there is no one-to-one mapping, and
+        MSBuild compares every output against all inputs (correct whole-target incremental granularity).
+    -->
+    <Target Name="CompileJsonResources"
+            Inputs="@(JsonResource);@(_JsonResourceExternalFiles)"
+            Outputs="@(JsonResource->'%(IntermediatePath)')">
         <JsonEmbeddedResourceProcessor Inputs="@(JsonResource)" ContextPath="$(MSBuildProjectDirectory)"/>
     </Target>
 
+    <!-- Compiles the resources (creating the intermediate directory first) and embeds the result. -->
     <Target Name="CompileAndAddJsonResources" BeforeTargets="BeforeBuild">
         <!-- Make intermediate output path first, maybe it is not exist -->
         <MakeDir Directories="$(IntermediateOutputPath)"/>
-        
+
         <CallTarget Targets="CompileJsonResources"/>
         <ItemGroup>
             <EmbeddedResource Include="%(JsonResource.IntermediatePath)" LogicalName="%(JsonResource.LogicalName)"/>
         </ItemGroup>
     </Target>
 
+    <!-- Removes the generated intermediate .resources files when the project is cleaned. -->
     <Target Name="CleanJsonResourceIntermediateFiles" AfterTargets="AfterClean">
         <Delete Files="%(JsonResource.IntermediatePath)"/>
     </Target>

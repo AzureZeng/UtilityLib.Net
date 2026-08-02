@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <IsPackable>false</IsPackable>
+        <RootNamespace>AzureZeng.MSBuildTasks.Json2Resources.Tests</RootNamespace>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
+        <PackageReference Include="MSTest.TestAdapter" Version="3.8.3" />
+        <PackageReference Include="MSTest.TestFramework" Version="3.8.3" />
+        <PackageReference Include="Microsoft.Build.Utilities.Core" Version="17.14.8" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\..\src\MSBuildTasks.Json2Resources\Json2Resources.csproj" />
+    </ItemGroup>
+</Project>

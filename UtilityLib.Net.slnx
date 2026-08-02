@@ -15,4 +15,7 @@
   <Folder Name="/Utilities/">
     <Project Path="utils/TZLocBuilder/TZLocBuilder.csproj" />
   </Folder>
+  <Folder Name="/Tests/">
+    <Project Path="test/MSBuildTasks.Json2Resources.Tests/MSBuildTasks.Json2Resources.Tests.csproj" />
+  </Folder>
 </Solution>
