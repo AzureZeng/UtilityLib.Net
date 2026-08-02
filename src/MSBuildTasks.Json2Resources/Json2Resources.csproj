@@ -3,7 +3,7 @@
         <TargetFramework>netstandard2.0</TargetFramework>
         <AssemblyName>AzureZeng.MSBuildTasks.Json2Resources</AssemblyName>
         <RootNamespace>AzureZeng.MSBuildTasks.Json2Resources</RootNamespace>
-        <Version>1.0.0</Version>
+        <Version>1.0.1</Version>
 
         <Description>Convert JSON resource manifests to standard .NET resources</Description>
         <PackageTags>resource json</PackageTags>
