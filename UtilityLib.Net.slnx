@@ -6,9 +6,6 @@
   </Configurations>
   <Folder Name="/CLI Utils/" />
   <Folder Name="/Libraries/">
-    <Project Path="src/AopExtensions/AopExtensions.csproj" />
-    <Project Path="src/DependencyInjectionUtilities/DependencyInjectionUtilities.csproj" />
-    <Project Path="src/RedisExtensions/RedisExtensions.csproj" />
     <Project Path="src/UtilityLib/UtilityLib.csproj" />
   </Folder>
   <Folder Name="/MSBuild Tasks/">
